@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AiConsultationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\KasirController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/tanya-medis', [AiConsultationController::class, 'index'])->name('tanya-medis.index');
     Route::post('/tanya-medis/ask', [AiConsultationController::class, 'ask'])->name('tanya-medis.ask');
     // -------------------------------------------
+    Route::get('/katalog', [KatalogController::class, 'index']);
+    Route::delete('/katalog/{id}', [\App\Http\Controllers\KatalogController::class, 'destroy'])->name('katalog.destroy');
+
+    Route::get('/kasir', [KasirController::class, 'index']);
+    Route::post('/kasir/simpan', [KasirController::class, 'store'])->name('kasir.simpan');
 });
 
 require __DIR__.'/auth.php';

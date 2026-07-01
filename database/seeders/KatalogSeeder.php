@@ -8,43 +8,41 @@ use Illuminate\Support\Facades\DB;
 class KatalogSeeder extends Seeder
 {
     public function run(): void
-    
     {
-        $this->call([
-            KatalogSeeder::class,
-        ]);
+        // Kosongkan tabel terlebih dahulu agar tidak bentrok saat di-seed ulang
+        DB::table('katalogs')->truncate();
 
         DB::table('katalogs')->insert([
             [
-                'kode_item' => 'OBAT-001',
-                'nama_item' => 'Paracetamol 500mg',
-                'kategori' => 'Obat Bebas',
-                'satuan' => 'Strip',
-                'harga' => 5000,
-                'stok' => 100,
-                'deskripsi' => 'Obat untuk menurunkan demam dan meredakan nyeri ringan.',
+                'kode_item'  => 'OBT-001',
+                'nama_item'  => 'Paracetamol 500mg',
+                'kategori'   => 'Anak & Dewasa',
+                'satuan'     => 'Tablet',
+                'harga'      => 5000,
+                'stok'       => 100,
+                'deskripsi'  => 'Obat penurun demam dan pereda nyeri ringan.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode_item' => 'OBAT-002',
-                'nama_item' => 'Amoxicillin 500mg',
-                'kategori' => 'Obat Keras',
-                'satuan' => 'Strip',
-                'harga' => 12000,
-                'stok' => 50,
-                'deskripsi' => 'Antibiotik untuk mengobati berbagai jenis infeksi bakteri.',
+                'kode_item'  => 'OBT-002',
+                'nama_item'  => 'Amoxicillin 500mg',
+                'kategori'   => 'Antibiotik',
+                'satuan'     => 'Kaplet',
+                'harga'      => 12000,
+                'stok'       => 50,
+                'deskripsi'  => 'Obat antibiotik untuk mengobati infeksi bakteri.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode_item' => 'ALKES-001',
-                'nama_item' => 'Masker Medis 3-Ply',
-                'kategori' => 'Alat Kesehatan',
-                'satuan' => 'Box',
-                'harga' => 35000,
-                'stok' => 30,
-                'deskripsi' => 'Masker pelindung kesehatan isi 50 pcs.',
+                'kode_item'  => 'OBT-003',
+                'nama_item'  => 'Promag Tablet',
+                'kategori'   => 'Obat Mag',
+                'satuan'     => 'Tablet',
+                'harga'      => 8500,
+                'stok'       => 75,
+                'deskripsi'  => 'Mengurangi gejala sakit mag dan kembung.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

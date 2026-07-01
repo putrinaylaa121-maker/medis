@@ -1,11 +1,21 @@
 <x-app-layout>
+    <style>
+        header {
+            background-color: #1e1b4b !important; /* Warna indigo gelap (bg-indigo-950) */
+            border-bottom: 2px solid #4338ca !important; /* Border indigo cerah */
+        }
+        header h2 {
+            color: #ffffff !important; /* Mengubah teks judul header menjadi putih agar terbaca */
+        }
+    </style>
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Dashboard Staff / Kasir Medis') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
+    
+    <div class="py-12 bg-emerald-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-6">
                 <h3 class="text-xl font-extrabold text-gray-800">Pilih Unit Operasional</h3>
@@ -22,7 +32,8 @@
                         <p class="text-sm text-gray-500 mt-2">Input data obat baru, update stok sisa, dan cek daftar obat kedaluwarsa.</p>
                     </div>
                     <div class="mt-6">
-                        <a href="#" class="w-full block text-center bg-blue-600 text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">Buka Modul Obat</a>
+                        <a href="{{ url('/katalog') }}" class="w-full block text-center bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">
+                        Buka Modul Obat</a>
                     </div>
                 </div>
 
@@ -35,7 +46,8 @@
                         <p class="text-sm text-gray-500 mt-2">Layanan kasir terintegrasi untuk pasien menebus resep obat dan rekam medis.</p>
                     </div>
                     <div class="mt-6">
-                        <a href="#" class="w-full block text-center bg-green-600 text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-green-700 transition">Buka Halaman Kasir</a>
+                        <a href="{{ url('/kasir') }}" class="block text-center bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition">
+                        Buka Halaman Kasir</a>
                     </div>
                 </div>
             </div>
