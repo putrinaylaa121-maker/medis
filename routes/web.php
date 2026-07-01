@@ -3,14 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AiConsultationController;
 use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KasirController;
+
+use App\Http\Controllers\InventoryController; // <--- JANGAN LUPA TAMBAHKAN INI DI ATAS
+use App\Http\Controllers\TransactionController; // <--- JANGAN LUPA TAMBAHKAN INI DI ATAS
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -28,6 +31,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/kasir', [KasirController::class, 'index']);
     Route::post('/kasir/simpan', [KasirController::class, 'store'])->name('kasir.simpan');
+
+    // --- TAMBAHAN RUTE INVENTARIS DAN TRANSAKSI ---
+    Route::get('/inventaris', [InventoryController::class, 'index'])->name('inventaris.index');
+    Route::get('/transaksi', [TransactionController::class, 'index'])->name('transaksi.index');
+    
 });
 
 require __DIR__.'/auth.php';
