@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                     <div>
@@ -40,6 +41,45 @@
                         <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     </div>
                 </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Pilih Unit Operasional</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-gray-800">Kelola Inventaris / Stok Obat</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">Input data obat baru, update stok sisa, dan cek daftar obat kedaluwarsa.</p>
+                    <a href="/electronic" class="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition">
+                        Buka Modul Obat
+                    </a>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="p-2 bg-green-50 text-green-600 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-gray-800">Transaksi Pembayaran (POS)</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4">Layanan kasir terintegrasi untuk pasien menebus resep obat dan rekam medis.</p>
+                    <a href="#" class="inline-block w-full text-center bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-4 rounded-lg transition">
+                        Buka Halaman Kasir
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 rounded-xl shadow-sm text-white flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="font-bold text-lg">Butuh Bantuan Asisten Medis AI?</h4>
+                    <p class="text-purple-100 text-sm">Gunakan fitur asisten virtual cerdas untuk pengecekan gejala awal secara praktis.</p>
+                </div>
+                <a href="/tanya-medis" class="bg-white text-purple-700 font-semibold py-2 px-6 rounded-lg hover:bg-purple-50 transition whitespace-nowrap">
+                    Akses Tanya Medis
+                </a>
             </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl border border-gray-100">
@@ -80,6 +120,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </x-app-layout>
