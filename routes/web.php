@@ -7,9 +7,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KasirController;
 
-use App\Http\Controllers\InventoryController; // <--- JANGAN LUPA TAMBAHKAN INI DI ATAS
-use App\Http\Controllers\TransactionController; // <--- JANGAN LUPA TAMBAHKAN INI DI ATAS
+use App\Http\Controllers\InventoryController; 
+use App\Http\Controllers\TransactionController; 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\SearchController;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,15 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/tanya-medis', [AiConsultationController::class, 'index'])->name('tanya-medis.index');
     Route::post('/tanya-medis/ask', [AiConsultationController::class, 'ask'])->name('tanya-medis.ask');
     // -------------------------------------------
-    Route::get('/katalog', [KatalogController::class, 'index']);
+    Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
+    Route::get('/katalog/create', [KatalogController::class, 'create'])->name('katalog.create');
+    Route::post('/katalog', [KatalogController::class, 'store'])->name('katalog.store');
     Route::delete('/katalog/{id}', [\App\Http\Controllers\KatalogController::class, 'destroy'])->name('katalog.destroy');
 
     Route::get('/kasir', [KasirController::class, 'index']);
     Route::post('/kasir/simpan', [KasirController::class, 'store'])->name('kasir.simpan');
 
-    // --- TAMBAHAN RUTE INVENTARIS DAN TRANSAKSI ---
-    Route::get('/inventaris', [InventoryController::class, 'index'])->name('inventaris.index');
-    Route::get('/transaksi', [TransactionController::class, 'index'])->name('transaksi.index');
+    Route::get('/search-cepat', [SearchController::class, 'quickSearch'])->name('search.quick');
+    
     
 });
 

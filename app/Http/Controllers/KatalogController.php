@@ -16,6 +16,28 @@ class KatalogController extends Controller
     return view('katalog.katalog', compact('dataObat')); 
 }
 
+    public function create()
+    {
+        return view('katalog.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'kode_item'  => 'required|string|unique:katalogs,kode_item',
+            'nama_item'  => 'required|string|max:255',
+            'kategori'   => 'required|string|max:255',
+            'satuan'     => 'required|string|max:50',
+            'harga'      => 'required|integer|min:0',
+            'stok'       => 'required|integer|min:0',
+            'deskripsi'  => 'nullable|string',
+        ]);
+
+        \App\Models\Katalog::create($validated);
+
+        return redirect()->route('katalog.index')->with('success', 'Obat baru berhasil ditambahkan!');
+    }
+
     public function destroy($id)
 {
     // Mencari data berdasarkan id, jika ketemu langsung dihapus

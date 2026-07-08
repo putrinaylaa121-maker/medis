@@ -44,8 +44,13 @@ class AiConsultationController extends Controller
                 ]
             ]);
 
-            // Ambil balasan teks dari AI
-            $aiReply = $response->json('candidates[0].content.parts[0].text');
+            // LOG sementara untuk debug — bisa dihapus nanti kalau sudah stabil
+            Log::info('Gemini status: ' . $response->status());
+            Log::info('Gemini body: ' . $response->body());
+
+            // FIX: gunakan dot notation ('candidates.0...'), bukan bracket notation ('candidates[0]...')
+            // karena method json() dari Laravel HTTP client tidak mendukung bracket notation
+            $aiReply = $response->json('candidates.0.content.parts.0.text');
 
             if ($aiReply) {
                 return response()->json(['success' => true, 'reply' => $aiReply]);
