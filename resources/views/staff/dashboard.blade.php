@@ -95,28 +95,30 @@
         const resultsBox = document.getElementById('quickSearchResults');
         let debounceTimer;
 
-        searchInput.addEventListener('input', function () {
-            clearTimeout(debounceTimer);
-            const q = this.value.trim();
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                clearTimeout(debounceTimer);
+                const q = this.value.trim();
 
-            if (q.length < 2) {
-                resultsBox.classList.add('hidden');
-                resultsBox.innerHTML = '';
-                return;
-            }
+                if (q.length < 2) {
+                    resultsBox.classList.add('hidden');
+                    resultsBox.innerHTML = '';
+                    return;
+                }
 
-            debounceTimer = setTimeout(() => {
-                fetch(`{{ route('search.quick') }}?q=${encodeURIComponent(q)}`)
-                    .then(res => res.json())
-                    .then(data => renderResults(data))
-                    .catch(err => console.error(err));
-            }, 300); // debounce 300ms
-        });
+                debounceTimer = setTimeout(() => {
+                    fetch(`{{ route('search.quick') }}?q=${encodeURIComponent(q)}`)
+                        .then(res => res.json())
+                        .then(data => renderResults(data))
+                        .catch(err => console.error(err));
+                }, 300); // debounce 300ms
+            });
+        }
 
         function renderResults(data) {
             let html = '';
 
-            if (data.obat.length > 0) {
+            if (data.obat && data.obat.length > 0) {
                 html += `<div class="px-4 pt-3 pb-1 text-xs font-bold text-gray-400 uppercase">Obat</div>`;
                 data.obat.forEach(item => {
                     html += `
@@ -127,8 +129,29 @@
                 });
             }
 
-            if (data.pasien.length > 0) {
+            if (data.pasien && data.pasien.length > 0) {
                 html += `<div class="px-4 pt-3 pb-1 text-xs font-bold text-gray-400 uppercase">Pasien</div>`;
                 data.pasien.forEach(item => {
                     html += `
-                        <a href="/pasien/${item.id}" class="flex justify-between items-center px-4 py-2 hover:bg-green-
+                        <a href="/pasien/${item.id}" class="flex justify-between items-center px-4 py-2 hover:bg-green-50 transition">
+                            <span class="text-gray-800 font-medium">${item.nama}</span>
+                            <span class="text-xs text-gray-400">No. RM: ${item.no_rm}</span>
+                        </a>`;
+                });
+            }
+
+            if (html === '') {
+                html = `<div class="px-4 py-4 text-sm text-gray-400 text-center">Tidak ada hasil ditemukan.</div>`;
+            }
+
+            resultsBox.innerHTML = html;
+            resultsBox.classList.remove('hidden');
+        }
+
+        document.addEventListener('click', function (e) {
+            if (searchInput && !searchInput.contains(e.target) && !resultsBox.contains(e.target)) {
+                resultsBox.classList.add('hidden');
+            }
+        });
+    </script>
+</x-app-layout>
