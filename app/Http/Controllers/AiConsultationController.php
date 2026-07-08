@@ -45,7 +45,7 @@ class AiConsultationController extends Controller
             ]);
 
             // Ambil balasan teks dari AI
-            $aiReply = $response->json('candidates[0].content.parts[0].text');
+            $aiReply = $response->json('candidates.0.content.parts.0.text');
 
             if ($aiReply) {
                 return response()->json(['success' => true, 'reply' => $aiReply]);
