@@ -14,7 +14,7 @@ class AiConsultationController extends Controller
         return view('staff.tanya-medis'); // Sesuaikan dengan letak view/blade kalian
     }
 
-    // 2. Proses mengirim pesan ke AI Gemini dan menerima balasannya
+    // 2. Process mengirim pesan ke AI Gemini dan menerima balasannya
     public function ask(Request $request)
     {
         // Validasi input pesan agar tidak kosong
@@ -43,8 +43,13 @@ class AiConsultationController extends Controller
                     ]
                 ]
             ]);
+            
+            // LOG sementara untuk debug — bisa dihapus nanti kalau sudah stabil
+            Log::info('Gemini status: ' . $response->status());
+            Log::info('Gemini body: ' . $response->body());
 
-            // Ambil balasan teks dari AI
+            // FIX: gunakan dot notation ('candidates.0...'), bukan bracket notation ('candidates[0]...')
+            // karena method json() dari Laravel HTTP client tidak mendukung bracket notation
             $aiReply = $response->json('candidates.0.content.parts.0.text');
 
             if ($aiReply) {
