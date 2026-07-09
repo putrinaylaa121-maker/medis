@@ -11,7 +11,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h2 class="text-xl font-extrabold text-gray-800">🤖 Asisten Tanya Medis (AI)</h2>
+                            <h2 class="text-xl font-extrabold text-gray-800">🤖 Asisten Tanya Medis 4 (AI)</h2>
                             <p class="text-xs text-gray-500 mt-0.5">Asisten virtual pendamping kesehatan yang ramah dan profesional.</p>
                         </div>
                     </div>
